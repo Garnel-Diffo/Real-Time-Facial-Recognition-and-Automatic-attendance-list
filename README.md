@@ -62,7 +62,7 @@ Application web de gestion d'assistance basée sur la **reconnaissance faciale e
 ### 1. Cloner et préparer le projet
 
 ```bash
-cd attendance-web
+cd Real-Time-Facial-Recognition-and-Automatic-attendance-list
 npm install
 ```
 
@@ -113,7 +113,7 @@ L'application s'ouvre sur **http://localhost:5173** ou **http://localhost:5174**
    - **Nom de la personne** si reconnue
    - **"Inconnu"** sinon (mais compté quand même)
 3. Les présents s'accumulent en bas à gauche
-4. Cliquer **"Exporter CSV"** pour télécharger la liste
+4. Cliquer **"Exporter CSV/XLSX"** pour télécharger la liste
 
 ### 3️⃣ **Admin** — Gérer les enrôlements
 
