@@ -66,7 +66,7 @@ cd Real-Time-Facial-Recognition-and-Automatic-attendance-list
 npm install
 ```
 
-### 2. Télécharger les modèles face-api
+### 2. (Si modèles absents dans `public/models/`) Télécharger les modèles face-api
 
 Les modèles (120+ MB) doivent être placés dans `public/models/` :
 
