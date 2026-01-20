@@ -1,0 +1,1514 @@
+[
+  {
+    "weights": [
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 9],
+        "quantization": {
+          "scale": 0.0026856216729856,
+          "min": -0.341073952469171,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/ClassPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [9],
+        "quantization": {
+          "scale": 0.00198518248165355,
+          "min": -0.321599562027875,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/ClassPredictor/biases"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 1024, 18],
+        "quantization": {
+          "scale": 0.00306034029698839,
+          "min": -0.489654447518143,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_1/ClassPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [18],
+        "quantization": {
+          "scale": 0.00080406788517447,
+          "min": -0.12221831854652,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_1/ClassPredictor/biases"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 18],
+        "quantization": {
+          "scale": 0.00125138005789588,
+          "min": -0.160176647410673,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_2/ClassPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [18],
+        "quantization": {
+          "scale": 0.000338070518245884,
+          "min": -0.0551054944740791,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_2/ClassPredictor/biases"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 18],
+        "quantization": {
+          "scale": 0.00118199329750211,
+          "min": -0.145385175592759,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_3/ClassPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [18],
+        "quantization": {
+          "scale": 0.000159857823860411,
+          "min": -0.0265363987608283,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_3/ClassPredictor/biases"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 18],
+        "quantization": {
+          "scale": 0.000703559143870484,
+          "min": -0.0851306564083286,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_4/ClassPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [18],
+        "quantization": {
+          "scale": 0.00008793946574716,
+          "min": -0.013190919862074,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_4/ClassPredictor/biases"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 128, 18],
+        "quantization": {
+          "scale": 0.00081320781918133,
+          "min": -0.110596263408661,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_5/ClassPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [18],
+        "quantization": {
+          "scale": 0.000098053380554797,
+          "min": -0.0146099537026648,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_5/ClassPredictor/biases"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 3,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/stack_1/2"
+      },
+      {
+        "dtype": "int32",
+        "shape": [3],
+        "quantization": {
+          "scale": 0.00392156862745098,
+          "min": 0,
+          "dtype": "uint8"
+        },
+        "name": "Postprocessor/Slice/begin"
+      },
+      {
+        "dtype": "int32",
+        "shape": [3],
+        "quantization": {
+          "scale": 1,
+          "min": -1,
+          "dtype": "uint8"
+        },
+        "name": "Postprocessor/Slice/size"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 12],
+        "quantization": {
+          "scale": 0.00373038485938428,
+          "min": -0.432724643688576,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/BoxEncodingPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [12],
+        "quantization": {
+          "scale": 0.00187447085684421,
+          "min": -0.39176440908044,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/BoxEncodingPredictor/biases"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 3072,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/stack_1/1"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 1024, 24],
+        "quantization": {
+          "scale": 0.00157488017689948,
+          "min": -0.200009782466234,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_1/BoxEncodingPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [24],
+        "quantization": {
+          "scale": 0.000282390671325664,
+          "min": -0.0434881633841524,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_1/BoxEncodingPredictor/biases"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 1536,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_1/stack_1/1"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 24],
+        "quantization": {
+          "scale": 0.000797445166344736,
+          "min": -0.110047432955574,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_2/BoxEncodingPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [24],
+        "quantization": {
+          "scale": 0.000135041798884962,
+          "min": -0.0203913116316293,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_2/BoxEncodingPredictor/biases"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 384,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_2/stack_1/1"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 24],
+        "quantization": {
+          "scale": 0.000711399024608088,
+          "min": -0.0860792819775787,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_3/BoxEncodingPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [24],
+        "quantization": {
+          "scale": 0.000050115815418608,
+          "min": -0.00761760394362842,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_3/BoxEncodingPredictor/biases"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 96,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_3/stack_1/1"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 24],
+        "quantization": {
+          "scale": 0.000590049314732645,
+          "min": -0.0690357698237195,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_4/BoxEncodingPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [24],
+        "quantization": {
+          "scale": 0.00003513663861097,
+          "min": -0.0063597315885857,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_4/BoxEncodingPredictor/biases"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 24,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_4/stack_1/1"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 128, 24],
+        "quantization": {
+          "scale": 0.000599056774494694,
+          "min": -0.0790754942332997,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_5/BoxEncodingPredictor/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [24],
+        "quantization": {
+          "scale": 0.000033928842886405,
+          "min": -0.00603933403378024,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_5/BoxEncodingPredictor/biases"
+      },
+      {
+        "dtype": "float32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 0.00784313771873713,
+          "dtype": "uint8"
+        },
+        "name": "Preprocessor/mul/x"
+      },
+      {
+        "dtype": "int32",
+        "shape": [2],
+        "quantization": {
+          "scale": 1,
+          "min": 512,
+          "dtype": "uint8"
+        },
+        "name": "Preprocessor/ResizeImage/size"
+      },
+      {
+        "dtype": "float32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 1,
+          "dtype": "uint8"
+        },
+        "name": "Preprocessor/sub/y"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 3, 32],
+        "quantization": {
+          "scale": 0.0394855106578154,
+          "min": -5.01465985354255,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_0_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [32],
+        "quantization": {
+          "scale": 0.0498106133704092,
+          "min": -7.37197077882056,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_0_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 32, 1],
+        "quantization": {
+          "scale": 0.0368335424685011,
+          "min": -4.71469343596814,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [32],
+        "quantization": {
+          "scale": 0.0121732767050465,
+          "min": -0.0121732767050465,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [32],
+        "quantization": {
+          "scale": 0.0321827692144057,
+          "min": -2.47807322950924,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [32],
+        "quantization": {
+          "scale": 0.0282875276079365,
+          "min": -3.36621578534444,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [32],
+        "quantization": {
+          "scale": 0.0471673853257123,
+          "min": 3.90714046657692e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 32, 64],
+        "quantization": {
+          "scale": 0.0401010943394081,
+          "min": -4.29081709431667,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [64],
+        "quantization": {
+          "scale": 0.221221003812902,
+          "min": -34.5104765948127,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_1_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 64, 1],
+        "quantization": {
+          "scale": 0.0100247509339276,
+          "min": -1.34331662514631,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [64],
+        "quantization": {
+          "scale": 0.00612091667511884,
+          "min": 0.522717654705048,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [64],
+        "quantization": {
+          "scale": 0.0231703538520663,
+          "min": -0.764621677118189,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [64],
+        "quantization": {
+          "scale": 0.0498082142250211,
+          "min": -5.82756106432746,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [64],
+        "quantization": {
+          "scale": 0.0517510470222024,
+          "min": 3.9161137990023e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 64, 128],
+        "quantization": {
+          "scale": 0.0219793441248875,
+          "min": -2.13199638011409,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0995866326724782,
+          "min": -11.0541162266451,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_2_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 128, 1],
+        "quantization": {
+          "scale": 0.0194349270240933,
+          "min": -2.6237151482526,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0178528977375405,
+          "min": 0.402040839195251,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0298882091746611,
+          "min": -1.97262180552763,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.029319268581914,
+          "min": -5.13087200183495,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0140187085843554,
+          "min": 3.90831782633626e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 128, 128],
+        "quantization": {
+          "scale": 0.020776657964669,
+          "min": -2.53475227168962,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.143831570943197,
+          "min": -9.63671525319417,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_3_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 128, 1],
+        "quantization": {
+          "scale": 0.00446355857101141,
+          "min": -0.598116848515529,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.00648743124569164,
+          "min": 0.479104280471802,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0265421642976649,
+          "min": -1.22093955769258,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0511994567571902,
+          "min": -8.60150873520795,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0308162838804956,
+          "min": 3.91150875109534e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 128, 256],
+        "quantization": {
+          "scale": 0.0107586598863789,
+          "min": -1.03283134909237,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0805821961047603,
+          "min": -9.34753474815219,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_4_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 256, 1],
+        "quantization": {
+          "scale": 0.0114593674154843,
+          "min": -1.32928662019617,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0083988838336047,
+          "min": 0.362809091806412,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0285814864962709,
+          "min": -3.65843027152267,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0398840137556487,
+          "min": -7.09935444850548,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.00909048168390405,
+          "min": 0.0208789967000484,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 256],
+        "quantization": {
+          "scale": 0.00895120162589877,
+          "min": -1.11890020323735,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0517580069747626,
+          "min": -5.74513877419865,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_5_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 256, 1],
+        "quantization": {
+          "scale": 0.00411043319047666,
+          "min": -0.604233679000069,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.013170199768216,
+          "min": 0.338663935661316,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0359937854841644,
+          "min": -3.70735990486893,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0269676732081993,
+          "min": -3.7485065759397,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0126154104868571,
+          "min": 3.91113889798386e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 512],
+        "quantization": {
+          "scale": 0.00822840648538926,
+          "min": -1.18489053389605,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0660896581761977,
+          "min": -7.46813137391034,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_6_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 512, 1],
+        "quantization": {
+          "scale": 0.00880107435525632,
+          "min": -0.959317104722939,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0305774165134804,
+          "min": 0.328598022460938,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0477853644127939,
+          "min": -8.93586314519246,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0433188494514017,
+          "min": -9.66010342766257,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0412645544436779,
+          "min": 0.000604183878749609,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 512],
+        "quantization": {
+          "scale": 0.00930581840814329,
+          "min": -1.14461566420162,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0464072021783567,
+          "min": -4.73353462219238,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_7_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 512, 1],
+        "quantization": {
+          "scale": 0.00813879265504725,
+          "min": -0.97665511860567,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0273517483589696,
+          "min": 0.340300410985947,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0441506105310777,
+          "min": -7.01994707444135,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0247668378493365,
+          "min": -2.92248686622171,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0254759883268408,
+          "min": 0.000260321015957742,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 512],
+        "quantization": {
+          "scale": 0.0108305262584312,
+          "min": -1.25634104597802,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.063608943714815,
+          "min": -7.95111796435188,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_8_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 512, 1],
+        "quantization": {
+          "scale": 0.00670408688339533,
+          "min": -0.864827207957997,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0153438315672033,
+          "min": 0.271102666854858,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.033782839307598,
+          "min": -4.79716318167892,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0219107782139498,
+          "min": -3.98776163493886,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0092840704100073,
+          "min": 0.000021581046894425,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 512],
+        "quantization": {
+          "scale": 0.0127830369799745,
+          "min": -1.9046725100162,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.072730827331543,
+          "min": -9.52773838043213,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_9_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 512, 1],
+        "quantization": {
+          "scale": 0.00612622803332759,
+          "min": -0.735147363999311,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0297037592121199,
+          "min": 0.286870002746582,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0439442989872951,
+          "min": -6.3279790541705,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0165669156055824,
+          "min": -2.75010799052669,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0121528728335511,
+          "min": 3.91333828637037e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 512],
+        "quantization": {
+          "scale": 0.013545243880328,
+          "min": -1.74733646056231,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0856681636735505,
+          "min": -9.93750698613185,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_10_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 512, 1],
+        "quantization": {
+          "scale": 0.00601230555889653,
+          "min": -0.787612028215446,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0146932315592672,
+          "min": 0.292239338159561,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0308891745174632,
+          "min": -3.24336332433364,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0148369424483355,
+          "min": -2.0474980578703,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.00723446610534345,
+          "min": 0.00013165915152058,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 512],
+        "quantization": {
+          "scale": 0.0162617225272983,
+          "min": -1.47981674998414,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.091437328563017,
+          "min": -14.1727859272676,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_11_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 512, 1],
+        "quantization": {
+          "scale": 0.00475035648719937,
+          "min": -0.650798838746314,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.00817496554524291,
+          "min": 0.312067002058029,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0301334222157796,
+          "min": -2.41067377726237,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.00608815726111917,
+          "min": -0.785372286684373,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.00366899733449899,
+          "min": 3.91244863000134e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 1024],
+        "quantization": {
+          "scale": 0.0109595144496245,
+          "min": -1.40281784955193,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1024],
+        "quantization": {
+          "scale": 0.108960458344104,
+          "min": -14.8186223347982,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_12_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 1024, 1],
+        "quantization": {
+          "scale": 0.00463303350934795,
+          "min": -0.56523008814045,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_depthwise/depthwise_weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1024],
+        "quantization": {
+          "scale": 0.0222850572244794,
+          "min": 0.235057905316353,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_depthwise/BatchNorm/gamma"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1024],
+        "quantization": {
+          "scale": 0.0324854850769043,
+          "min": -3.99571466445923,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_depthwise/BatchNorm/beta"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1024],
+        "quantization": {
+          "scale": 0.0147600618063235,
+          "min": -2.12544890011058,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_depthwise/BatchNorm/moving_mean"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1024],
+        "quantization": {
+          "scale": 0.00360574231428259,
+          "min": 3.9067056828998e-36,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_depthwise/BatchNorm/moving_variance"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 1024, 1024],
+        "quantization": {
+          "scale": 0.0173119881573845,
+          "min": -2.09475056704353,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1024],
+        "quantization": {
+          "scale": 0.164475287643133,
+          "min": -25.6581448723288,
+          "dtype": "uint8"
+        },
+        "name": "MobilenetV1/Conv2d_13_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 1024, 256],
+        "quantization": {
+          "scale": 0.00264930514728322,
+          "min": -0.368253415472367,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_0_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0124745967341404,
+          "min": -2.30780039581598,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_0_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 256, 512],
+        "quantization": {
+          "scale": 0.0145333514494054,
+          "min": -1.81666893117568,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_1_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [512],
+        "quantization": {
+          "scale": 0.0242687767627192,
+          "min": -2.47541522979736,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_1_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 512, 128],
+        "quantization": {
+          "scale": 0.00220840374628703,
+          "min": -0.287092487017314,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_2_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0124513490527284,
+          "min": -1.59377267874923,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_2_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 128, 256],
+        "quantization": {
+          "scale": 0.0263342296375948,
+          "min": -2.89676526013543,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_3_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0250991779215196,
+          "min": -1.4055539636051,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_3_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 128],
+        "quantization": {
+          "scale": 0.00456534004678913,
+          "min": -0.397184584070655,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_4_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.017302456556582,
+          "min": -2.5953684834873,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_4_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 128, 256],
+        "quantization": {
+          "scale": 0.0253473384707582,
+          "min": -3.85279544755524,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_5_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [256],
+        "quantization": {
+          "scale": 0.0331346595988554,
+          "min": -2.91585004469928,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_5_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 1, 256, 64],
+        "quantization": {
+          "scale": 0.00249310439708186,
+          "min": -0.28172079687025,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_6_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [64],
+        "quantization": {
+          "scale": 0.0113833609749289,
+          "min": -1.27493642919204,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_6_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "float32",
+        "shape": [3, 3, 64, 128],
+        "quantization": {
+          "scale": 0.020821522731407,
+          "min": -2.74844100054573,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_7_pointwise/weights"
+      },
+      {
+        "dtype": "float32",
+        "shape": [128],
+        "quantization": {
+          "scale": 0.0521442188936121,
+          "min": -3.59795110365924,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/Conv2d_7_pointwise/convolution_bn_offset"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 6,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_5/stack_1/1"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 1,
+          "dtype": "uint8"
+        },
+        "name": "concat_1/axis"
+      },
+      {
+        "dtype": "int32",
+        "shape": [1],
+        "quantization": {
+          "scale": 1,
+          "min": 0,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/strided_slice/stack"
+      },
+      {
+        "dtype": "int32",
+        "shape": [1],
+        "quantization": {
+          "scale": 1,
+          "min": 1,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/strided_slice/stack_1"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 5118,
+          "dtype": "uint8"
+        },
+        "name": "Postprocessor/stack/1"
+      },
+      {
+        "dtype": "int32",
+        "shape": [],
+        "quantization": {
+          "scale": 1,
+          "min": 4,
+          "dtype": "uint8"
+        },
+        "name": "Prediction/BoxPredictor_0/stack/3"
+      },
+      {
+        "dtype": "float32",
+        "shape": [1, 5118, 4],
+        "name": "Output/extra_dim"
+      }
+    ],
+    "paths": [
+      "ssd_mobilenetv1_model.bin"
+    ]
+  }
+]
