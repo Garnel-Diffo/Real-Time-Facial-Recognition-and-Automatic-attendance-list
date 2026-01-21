@@ -55,7 +55,7 @@ export default function App() {
                   className={`px-6 py-2.5 rounded-full font-bold transition-all duration-300 whitespace-nowrap transform hover:scale-105 active:scale-95 ${
                     view === item.id
                       ? 'bg-gradient-to-r from-blue-600 via-violet-600 to-indigo-700 text-white shadow-lg scale-105 ring-2 ring-white/50'
-                      : 'text-gray-700 hover:bg-white/50 hover:text-blue-700 hover:shadow-md'
+                      : 'bg-blue-300/50 text-gray-700 hover:bg-blue-200/60 hover:text-blue-800 hover:shadow-md'
                   }`}
                 >
                   <span className="mr-2 text-lg">{item.icon}</span>
