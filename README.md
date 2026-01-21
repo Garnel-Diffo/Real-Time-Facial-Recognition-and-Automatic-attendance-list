@@ -23,7 +23,7 @@ npm run dev
 # → Ouvre http://localhost:5173
 
 # 4. Utiliser l'app
-- Onglet "Enrôler" : Capturer 5-10 photos d'une personne
+- Onglet "Enrôler" : Capturer 5-10 photos d\'une personne
 - Onglet "Session" : Détecter et reconnaître des visages en temps réel
 - Onglet "Admin" : Gérer les enrôlements (voir/supprimer)
 ```
