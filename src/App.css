@@ -40,3 +40,59 @@
 .read-the-docs {
   color: #888;
 }
+
+.detected-names {
+  margin-top: 2em;
+  padding: 1.5em;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.detected-names h3 {
+  margin: 0 0 1em 0;
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 600;
+}
+
+.detected-names ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5em;
+}
+
+.detected-names li {
+  padding: 0.75em 1em;
+  background-color: #ffffff;
+  border: 1px solid #21a366;
+  border-radius: 4px;
+  color: #21a366;
+  font-weight: 500;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detected-names li:hover {
+  background-color: #21a366;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.video-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 1em 0;
+}
+
+.overlay-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+

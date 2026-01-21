@@ -1,19 +1,9 @@
-// src/components/Enrollment.jsx
-/*
-  Composant `Enrollment` : interface pour enrôler une personne.
-  - Active la caméra, capture plusieurs photos, calcule les descripteurs de visage
-    et les sauvegarde en local via `saveEnrollment`.
-  - Fournit des messages d'état clairs pour guider l'utilisateur.
-*/
 import { useEffect, useRef, useState } from 'react';
 import { computeDescriptorFromCanvas, loadFaceApiModels, saveEnrollment } from '../services/faceService';
-import Button from './ui/Button';
 
-// Fonction auxiliaire : attendre que la vidéo soit prête avant de la lancer
-// Placée au niveau du module pour éviter l'imbrication profonde dans les hooks
 async function waitForVideoToBeReady(video, timeout = 2000) {
   if (!video) return;
-  if (video.readyState >= 3) return; // Données vidéo suffisantes (HAVE_FUTURE_DATA / HAVE_ENOUGH_DATA)
+  if (video.readyState >= 3) return;
   return new Promise((resolve) => {
     const onCanPlay = () => {
       video.removeEventListener('canplay', onCanPlay);
@@ -28,54 +18,46 @@ async function waitForVideoToBeReady(video, timeout = 2000) {
 }
 
 export default function Enrollment() {
-  // Références vers les éléments DOM
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
-  // États du composant
-  const [status, setStatus] = useState('Initialisation...');
-  const [label, setLabel] = useState(''); // Nom ou ID de la personne à enrôler
-  const [captures, setCaptures] = useState([]); // Tableau des descripteurs capturés
-  const [modelsLoaded, setModelsLoaded] = useState(false); // Indicateur : modèles chargés ?
+  const [status, setStatus] = useState('🔄 Initialisation...');
+  const [label, setLabel] = useState('');
+  const [captures, setCaptures] = useState([]);
+  const [modelsLoaded, setModelsLoaded] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     let mounted = true;
     let localStream = null;
 
-    
-
     async function init() {
       try {
-        // Étape 1 : Charger les modèles de reconnaissance faciale
-        setStatus('Chargement des modèles (cela peut prendre quelques secondes)...');
+        setStatus('📦 Chargement modèles...');
         await loadFaceApiModels('/models');
         if (!mounted) return;
         setModelsLoaded(true);
-        setStatus('Modèles chargés. Activation caméra...');
-      } catch (e) {
-        setStatus('Erreur chargement modèles: ' + e.message);
-        return;
-      }
+        setStatus('🎥 Activation caméra...');
 
-      try {
-        // Étape 2 : Accéder à la caméra de l'appareil
-        localStream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720 } });
+        localStream = await navigator.mediaDevices.getUserMedia({
+          video: { width: 1280, height: 720 }
+        });
+        
         const v = videoRef.current;
         if (v) {
           v.srcObject = localStream;
-          // Attendre que la caméra soit prête avant de la lancer
           await waitForVideoToBeReady(v, 2000);
           try {
             await v.play();
           } catch (err) {
-            // La lecture vidéo peut échouer dans certains navigateurs sans action utilisateur
-            console.warn('video.play() failed:', err?.message || err);
+            console.warn('Play failed:', err?.message);
           }
         }
+        
         if (!mounted) return;
-        setStatus('Caméra prête. Saisis le nom et prends des photos.');
+        setStatus('✅ Prêt • Saisis le nom et capture 5-10 photos');
       } catch (err) {
-        setStatus('Caméra indisponible: ' + (err?.message || 'inconnue'));
+        setStatus('❌ Erreur: ' + (err?.message || 'inconnue'));
       }
     }
 
@@ -89,74 +71,189 @@ export default function Enrollment() {
 
   async function captureOne() {
     try {
-      if (!modelsLoaded) { setStatus('Modèles non chargés. Patiente...'); return; }
-      if (!label.trim()) { setStatus('Saisis le nom / id avant de prendre la photo'); return; }
-      const vid = videoRef.current;
-      if (!vid) { setStatus('Vidéo non prête'); return; }
-      // Vérifier que la vidéo a des données avant de capturer
-      if (vid.readyState < 2) { // HAVE_CURRENT_DATA
-        setStatus('Caméra pas encore prête, attends un instant...');
-        await new Promise(r => setTimeout(r, 500));
+      if (!modelsLoaded) {
+        setStatus('⏳ Modèles pas encore chargés...');
+        return;
       }
-
-      const c = canvasRef.current;
-      c.width = vid.videoWidth || 640;
-      c.height = vid.videoHeight || 480;
-      const ctx = c.getContext('2d');
-      // Copier le frame vidéo actuel sur le canvas
-      ctx.drawImage(vid, 0, 0, c.width, c.height);
-
-      setStatus('Analyse image...');
-      // Détection avec timeout gérée dans le service
-      const descriptor = await computeDescriptorFromCanvas(c, 4500);
-      if (!descriptor) {
-        setStatus('Aucun visage détecté / délai dépassé. Repositionne la personne et réessaie.');
+      if (!label.trim()) {
+        setStatus('⚠️ Entre le nom ou ID de la personne');
         return;
       }
 
-      setCaptures(prev => {
-        const next = [...prev, Array.from(descriptor)];
-        setStatus(`Photo capturée (${next.length})`);
-        return next;
-      });
+      setIsProcessing(true);
+      const vid = videoRef.current;
+      if (!vid || vid.readyState < 2) {
+        setStatus('⏳ Caméra pas prête...');
+        await new Promise(r => setTimeout(r, 500));
+        setIsProcessing(false);
+        return;
+      }
+
+      const canvas = canvasRef.current;
+      if (!canvas) {
+        setStatus('❌ Canvas error');
+        setIsProcessing(false);
+        return;
+      }
+
+      // Dessiner la vidéo sur le canvas AVANT de détecter
+      const ctx = canvas.getContext('2d');
+      canvas.width = vid.videoWidth;
+      canvas.height = vid.videoHeight;
+      ctx.drawImage(vid, 0, 0, canvas.width, canvas.height);
+
+      const desc = await computeDescriptorFromCanvas(canvas);
+      if (!desc) {
+        setStatus('❌ Pas de visage détecté');
+        setIsProcessing(false);
+        return;
+      }
+
+      const newCaptures = [...captures, desc];
+      setCaptures(newCaptures);
+      setStatus(`✅ Photo ${newCaptures.length} capturée • ${Math.max(5 - newCaptures.length, 0)} minimum requis`);
+      setIsProcessing(false);
     } catch (err) {
-      console.error('captureOne error', err);
-      setStatus('Erreur lors de l’analyse : ' + (err?.message || 'inconnue'));
+      setStatus('❌ ' + (err?.message || 'Erreur capture'));
+      setIsProcessing(false);
     }
   }
 
-  async function finalize() {
+  async function save() {
     try {
-      if (captures.length < 3) { setStatus('Prends au moins 3 photos pour fiabilité'); return; }
+      if (!label.trim()) {
+        setStatus('⚠️ Entre le nom');
+        return;
+      }
+      if (captures.length < 5) {
+        setStatus(`⚠️ Minimum 5 photos (tu en as ${captures.length})`);
+        return;
+      }
+
+      setIsProcessing(true);
+      setStatus('💾 Sauvegarde...');
+      console.log(`[Enrollment] Sauvegarde de ${label} avec ${captures.length} descriptors`);
+
       await saveEnrollment(label.trim(), captures);
-      setStatus('Enrôlement enregistré.');
+
+      setStatus('✅ Enrôlement réussi! Réinitialisation...');
+      console.log(`[Enrollment] ✓ ${label} enrôlé avec succès`);
       setLabel('');
       setCaptures([]);
+
+      setTimeout(() => {
+        setStatus('✅ Prêt • Saisis le nom et capture 5-10 photos');
+        setIsProcessing(false);
+      }, 2000);
     } catch (err) {
-      setStatus('Erreur sauvegarde enrôlement: ' + (err?.message || 'inconnue'));
+      console.error('[Enrollment Save]', err);
+      setStatus('❌ ' + (err?.message || 'Erreur save'));
+      setIsProcessing(false);
     }
   }
 
   return (
-    <div className="card max-w-3xl mx-auto">
-      <h2 className="text-xl font-semibold mb-3">Enrôlement étudiant</h2>
-      <p className="text-sm text-gray-600 mb-2">{status}</p>
+    <div className="w-full">
+      {/* Titre */}
+      <div className="text-center mb-8">
+        <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-violet-600 to-indigo-700 bg-clip-text text-transparent mb-2">
+          ➕ Enrôler Personne
+        </h2>
+        <p className="text-gray-600 font-medium">Ajouter une nouvelle personne au système</p>
+      </div>
 
-      <div className="flex gap-6">
-        <div>
-          <video ref={videoRef} className="rounded-lg shadow-md" autoPlay muted playsInline style={{ width: 480, height: 360 }} />
-          <canvas ref={canvasRef} style={{ display: 'none' }} />
+      {/* Layout responsive */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6">
+        {/* GAUCHE: Vidéo */}
+        <div className="space-y-4">
+          {/* Card Vidéo */}
+          <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+            <video
+              ref={videoRef}
+              className="w-full aspect-video bg-black"
+              autoPlay
+              muted
+              playsInline
+            />
+            <canvas ref={canvasRef} className="hidden" />
+
+            {/* Info sous vidéo */}
+            <div className="px-6 py-4 border-t border-gray-200 bg-gradient-to-r from-blue-50 to-violet-50">
+              <p className="text-sm text-gray-700 font-bold">
+                🎬 Caméra active • Assure une bonne luminosité
+              </p>
+            </div>
+          </div>
+
+          {/* Info utile */}
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg p-4 shadow-md">
+            <p className="text-sm text-amber-900 font-bold">
+              💡 <strong>Conseil:</strong> Capture 8-10 photos de différents angles
+            </p>
+          </div>
         </div>
 
-        <div className="flex-1">
-          <label htmlFor="enroll-label" className="block mb-2">Nom complet / ID</label>
-          <input id="enroll-label" value={label} onChange={e => setLabel(e.target.value)} className="w-full p-2 border rounded mb-3" placeholder="Ex: KENNE DIFFO" />
+        {/* DROITE: Inputs & Contrôles */}
+        <div className="space-y-4">
+          {/* Status */}
+          <div className="bg-gradient-to-r from-blue-100 via-violet-100 to-indigo-100 border-2 border-blue-300 rounded-2xl p-6 shadow-lg">
+            <p className="text-lg font-semibold text-gray-800">
+              {status}
+            </p>
+          </div>
 
-          <div className="space-y-2">
-            <Button onClick={captureOne} className="bg-primary text-white">Prendre une photo</Button>
-            <Button onClick={finalize} className="bg-accent text-white">Enregistrer enrôlement</Button>
-            <button onClick={() => setCaptures([])} className="btn bg-gray-200 text-black px-3 py-2 rounded">Reset photos</button>
-            <div>Photos capturées : {captures.length}</div>
+          {/* Inputs */}
+          <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl p-6 space-y-4 shadow-lg">
+            <div>
+              <label className="block text-sm font-bold text-gray-700 mb-2">
+                👤 Nom / ID
+              </label>
+              <input
+                type="text"
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
+                placeholder="Ex: Jean Dupont"
+                disabled={isProcessing}
+                className="w-full px-4 py-3 bg-white border-2 border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-medium disabled:opacity-50 transition-all duration-300 hover:border-blue-300"
+              />
+            </div>
+
+            {/* Progress bar */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <label className="text-sm font-bold text-gray-700">
+                  📸 Photos
+                </label>
+                <span className={`text-sm font-bold ${captures.length >= 5 ? 'text-green-600' : 'text-orange-600'}`}>
+                  {captures.length} / 5-10
+                </span>
+              </div>
+              <div className="w-full bg-gray-300 rounded-full h-3 overflow-hidden shadow-inner">
+                <div
+                  className="bg-gradient-to-r from-blue-600 via-violet-600 to-indigo-700 h-full transition-all duration-300"
+                  style={{ width: `${Math.min((captures.length / 10) * 100, 100)}%` }}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Boutons */}
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={captureOne}
+              disabled={isProcessing || !modelsLoaded}
+              className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 via-violet-600 to-indigo-700 hover:from-blue-700 hover:via-violet-700 hover:to-indigo-800 text-white font-bold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl transform hover:scale-105 active:scale-95 shadow-lg"
+            >
+              {isProcessing ? '⏳ Capture...' : '📸 Capturer Photo'}
+            </button>
+
+            <button
+              onClick={save}
+              disabled={isProcessing || captures.length < 5}
+              className="w-full py-4 px-6 bg-gradient-to-r from-green-500 via-emerald-600 to-teal-700 hover:from-green-600 hover:via-emerald-700 hover:to-teal-800 text-white font-bold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl transform hover:scale-105 active:scale-95 shadow-lg"
+            >
+              {isProcessing ? '💾 Sauvegarde...' : '✅ Sauvegarder'}
+            </button>
           </div>
         </div>
       </div>

@@ -1,11 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* petites règles supplémentaires */
-body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-.video-wrapper { position: relative; display: inline-block; }
-.overlay-canvas { position: absolute; left: 0; top: 0; pointer-events: none; }
-.header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-.card { background:white; border-radius:12px; padding:16px; box-shadow:0 6px 18px rgba(16,24,40,0.08); }
-.btn { @apply px-4 py-2 rounded-lg font-medium shadow-sm; }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e6d9ff 50%, #e0f2ff 100%);
+  @apply text-gray-900;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 197, 255, 0.8);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+  background: linear-gradient(to right, #f0f0f0 0%, #fff 50%, #f0f0f0 100%);
+  background-size: 1000px 100%;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ===== CARD STYLES ===== */
+.card {
+  @apply bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-lg;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  @apply shadow-xl border-white/40;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-lg font-semibold shadow-md transition-all duration-300 active:scale-95;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* ===== INPUTS ===== */
+input, textarea, select {
+  @apply transition-all duration-200;
+}
+
+input:focus, textarea:focus, select:focus {
+  @apply ring-2 ring-indigo-500/50 border-indigo-500;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-indigo-600 to-purple-600;
+}
+
+/* ===== UTILITIES ===== */
+.video-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.overlay-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent;
+}
+
+.glass-effect {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  body {
+    @apply text-base;
+  }
+
+  .card {
+    @apply p-4;
+  }
+
+  .btn {
+    @apply px-3 py-2 text-sm;
+  }
+}
