@@ -380,7 +380,7 @@ export default function Session() {
               className="absolute top-3 right-3 z-20 bg-gradient-to-br from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95"
             >
               <span className="text-xl" role="img" aria-label="Basculer caméra">
-                {facingMode === 'user' ? '📷' : '🎬'}
+                {facingMode === 'user' ? '🔄' : '🔄'}
               </span>
             </button>
 

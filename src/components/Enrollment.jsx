@@ -190,8 +190,15 @@ export default function Enrollment() {
 
       {/* Layout responsive */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6">
-        {/* GAUCHE: Vidéo */}
+        {/* GAUCHE: Vidéo + Conseil (conseil maintenant au-dessus) */}
         <div className="space-y-4">
+          {/* Info utile (placée au-dessus de la vidéo) */}
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg p-4 shadow-md">
+            <p className="text-sm text-amber-900 font-bold">
+              💡 <strong>Conseil:</strong> Capture 8-10 photos de différents angles
+            </p>
+          </div>
+
           {/* Card Vidéo */}
           <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 relative group">
             {/* Bouton basculer caméra - SUPERPOSÉ EN HAUT À DROITE */}
@@ -202,7 +209,7 @@ export default function Enrollment() {
               className="absolute top-3 right-3 z-20 bg-gradient-to-br from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="text-xl" role="img" aria-label="Basculer caméra">
-                {facingMode === 'user' ? '📷' : '🎬'}
+                {facingMode === 'user' ? '🔄' : '🔄'}
               </span>
             </button>
 
@@ -221,13 +228,6 @@ export default function Enrollment() {
                 🎬 Caméra {facingMode === 'user' ? 'frontale' : 'arrière'} active • Assure une bonne luminosité
               </p>
             </div>
-          </div>
-
-          {/* Info utile */}
-          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg p-4 shadow-md">
-            <p className="text-sm text-amber-900 font-bold">
-              💡 <strong>Conseil:</strong> Capture 8-10 photos de différents angles
-            </p>
           </div>
         </div>
 
