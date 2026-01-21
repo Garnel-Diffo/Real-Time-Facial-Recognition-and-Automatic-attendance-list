@@ -128,6 +128,9 @@ export default function Session() {
     setFps(v);
   };
 
+  // Store latest detections to redraw every frame
+  const lastDetectionsRef = useRef([]);
+
   const processFrame = useCallback(async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -148,6 +151,14 @@ export default function Session() {
     }
 
     ctx.drawImage(video, 0, 0, VIDEO_WIDTH, VIDEO_HEIGHT);
+
+    // REDRAW cached detections on every frame to keep boxes visible
+    if (lastDetectionsRef.current && lastDetectionsRef.current.length > 0) {
+      console.log(`[processFrame] Redrawing ${lastDetectionsRef.current.length} cached detections`);
+      for (const cached of lastDetectionsRef.current) {
+        drawDetectionBox(ctx, cached.box, cached.labelText, cached.isKnown);
+      }
+    }
 
     // FPS counter
     state.frameCounter++;
@@ -181,9 +192,11 @@ export default function Session() {
       if (!detections || detections.length === 0) {
         setMessage(`⏳ Recherche... | ${fps} fps`);
       } else {
+        console.log(`[processFrame] Detections found: ${detections.length}`);
         const newPresent = new Set(presentSet);
         let knownCount = 0;
         const currentUnknownPositions = []; // Track unknown faces this frame
+        const cachedDetections = []; // Cache detections for redraw every frame
 
         for (const detection of detections) {
           if (!detection.descriptor) continue;
@@ -199,7 +212,11 @@ export default function Session() {
           // Show only the name in the overlay for instant clarity
           const labelText = isKnown ? `${match.label}` : 'Inconnu';
 
+          console.log(`[drawDetectionBox] Drawing: "${labelText}" (isKnown=${isKnown}), box=[x:${Math.round(box.x)}, y:${Math.round(box.y)}, w:${Math.round(box.width)}, h:${Math.round(box.height)}]`);
           drawDetectionBox(ctx, box, labelText, isKnown);
+          
+          // Cache this detection for redraw on subsequent frames
+          cachedDetections.push({ box, labelText, isKnown });
 
           if (isKnown) {
             newPresent.add(match.label);
@@ -232,6 +249,9 @@ export default function Session() {
         }
 
         updatePresentSet(newPresent);
+
+        // Update cache for redraw on subsequent frames
+        lastDetectionsRef.current = cachedDetections;
 
         // Clean old unknown faces (not seen in last 5 seconds) and add new ones
         const now = Date.now();
