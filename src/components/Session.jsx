@@ -43,6 +43,7 @@ export default function Session() {
   const canvasRef = useRef(null);
   const processingFrameRef = useRef(null);
   const matcherRef = useRef(null);
+  const streamRef = useRef(null);
   const stateRef = useRef({
     frameCounter: 0,
     fpsCounter: 0,
@@ -58,6 +59,53 @@ export default function Session() {
   const [unknownCount, setUnknownCount] = useState(0); // Unique unknown faces
   const [detectedNames, setDetectedNames] = useState([]);
   const [fps, setFps] = useState(0);
+  const [facingMode, setFacingMode] = useState('user'); // 'user' = frontale, 'environment' = arrière
+
+  const toggleCamera = async () => {
+    const newFacing = facingMode === 'user' ? 'environment' : 'user';
+    try {
+      if (processingFrameRef.current) {
+        cancelAnimationFrame(processingFrameRef.current);
+      }
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(t => t.stop());
+      }
+
+      setMessage(`🎥 Basculement vers caméra ${newFacing === 'user' ? 'frontale' : 'arrière'}...`);
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: VIDEO_WIDTH, height: VIDEO_HEIGHT, facingMode: newFacing }
+      });
+
+      streamRef.current = stream;
+      setFacingMode(newFacing);
+
+      const v = videoRef.current;
+      if (v) {
+        v.srcObject = stream;
+        await new Promise((resolve) => {
+          const timeout = setTimeout(resolve, 2000);
+          const handler = () => {
+            clearTimeout(timeout);
+            v.removeEventListener('loadedmetadata', handler);
+            resolve();
+          };
+          v.addEventListener('loadedmetadata', handler);
+        });
+        try {
+          await v.play();
+        } catch (e) {
+          console.warn('[Session] Play:', e?.message);
+        }
+      }
+
+      setMessage('✅ SESSION PRÊTE - Présentez-vous');
+      processingFrameRef.current = requestAnimationFrame(processFrame);
+    } catch (err) {
+      console.error('[Session Camera Toggle]', err);
+      setMessage(`❌ Erreur basculement caméra: ${err?.message || 'inconnue'}`);
+    }
+  };
 
   const updateDetectedNames = useCallback((name) => {
     if (!name || name === 'Inconnu') return;
@@ -196,7 +244,6 @@ export default function Session() {
 
   useEffect(() => {
     let mounted = true;
-    let stream = null;
 
     const initSession = async () => {
       try {
@@ -218,8 +265,8 @@ export default function Session() {
         }
 
         setMessage('🎥 Accès caméra...');
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: { width: { ideal: VIDEO_WIDTH }, height: { ideal: VIDEO_HEIGHT } },
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: VIDEO_WIDTH }, height: { ideal: VIDEO_HEIGHT }, facingMode: 'user' },
           audio: false
         });
 
@@ -227,6 +274,9 @@ export default function Session() {
           stream?.getTracks().forEach(t => t.stop());
           return;
         }
+
+        streamRef.current = stream;
+        setFacingMode('user');
 
         const video = videoRef.current;
         if (!video) {
@@ -263,11 +313,13 @@ export default function Session() {
     return () => {
       mounted = false;
       if (processingFrameRef.current) cancelAnimationFrame(processingFrameRef.current);
-      stream?.getTracks().forEach(t => {
-        try { t.stop(); } catch (e) {
-          // Silencer
-        }
-      });
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(t => {
+          try { t.stop(); } catch (e) {
+            // Silencer
+          }
+        });
+      }
     };
   }, [processFrame]);
 
@@ -320,7 +372,18 @@ export default function Session() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6">
         <div className="space-y-4">
-          <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl">
+          <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl relative group">
+            {/* Bouton basculer caméra - SUPERPOSÉ EN HAUT À DROITE */}
+            <button
+              onClick={toggleCamera}
+              title={`Passer à caméra ${facingMode === 'user' ? 'arrière' : 'frontale'}`}
+              className="absolute top-3 right-3 z-20 bg-gradient-to-br from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95"
+            >
+              <span className="text-xl" role="img" aria-label="Basculer caméra">
+                {facingMode === 'user' ? '📷' : '🎬'}
+              </span>
+            </button>
+
             <canvas ref={canvasRef} className="w-full aspect-video bg-black rounded-2xl" />
           </div>
 

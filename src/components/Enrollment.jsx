@@ -20,16 +20,56 @@ async function waitForVideoToBeReady(video, timeout = 2000) {
 export default function Enrollment() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+  const streamRef = useRef(null);
 
   const [status, setStatus] = useState('🔄 Initialisation...');
   const [label, setLabel] = useState('');
   const [captures, setCaptures] = useState([]);
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [facingMode, setFacingMode] = useState('user'); // 'user' = frontale, 'environment' = arrière
+
+  const initCamera = async (facing = 'user') => {
+    try {
+      // Arrêter le flux existant
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(t => t.stop());
+      }
+
+      setStatus(`🎥 Activation caméra ${facing === 'user' ? 'frontale' : 'arrière'}...`);
+
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: 1280, height: 720, facingMode: facing }
+      });
+
+      streamRef.current = stream;
+      setFacingMode(facing);
+
+      const v = videoRef.current;
+      if (v) {
+        v.srcObject = stream;
+        await waitForVideoToBeReady(v, 2000);
+        try {
+          await v.play();
+        } catch (err) {
+          console.warn('Play failed:', err?.message);
+        }
+      }
+
+      setStatus('✅ Prêt • Saisis le nom et capture 5-10 photos');
+    } catch (err) {
+      console.error('Camera init error:', err);
+      setStatus('❌ Erreur caméra: ' + (err?.message || 'inconnue'));
+    }
+  };
+
+  const toggleCamera = async () => {
+    const newFacing = facingMode === 'user' ? 'environment' : 'user';
+    await initCamera(newFacing);
+  };
 
   useEffect(() => {
     let mounted = true;
-    let localStream = null;
 
     async function init() {
       try {
@@ -37,27 +77,11 @@ export default function Enrollment() {
         await loadFaceApiModels('/models');
         if (!mounted) return;
         setModelsLoaded(true);
-        setStatus('🎥 Activation caméra...');
-
-        localStream = await navigator.mediaDevices.getUserMedia({
-          video: { width: 1280, height: 720 }
-        });
-        
-        const v = videoRef.current;
-        if (v) {
-          v.srcObject = localStream;
-          await waitForVideoToBeReady(v, 2000);
-          try {
-            await v.play();
-          } catch (err) {
-            console.warn('Play failed:', err?.message);
-          }
-        }
-        
-        if (!mounted) return;
-        setStatus('✅ Prêt • Saisis le nom et capture 5-10 photos');
+        await initCamera('user');
       } catch (err) {
-        setStatus('❌ Erreur: ' + (err?.message || 'inconnue'));
+        if (mounted) {
+          setStatus('❌ Erreur: ' + (err?.message || 'inconnue'));
+        }
       }
     }
 
@@ -65,7 +89,9 @@ export default function Enrollment() {
 
     return () => {
       mounted = false;
-      if (localStream) localStream.getTracks().forEach(t => t.stop());
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(t => t.stop());
+      }
     };
   }, []);
 
@@ -167,7 +193,19 @@ export default function Enrollment() {
         {/* GAUCHE: Vidéo */}
         <div className="space-y-4">
           {/* Card Vidéo */}
-          <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div className="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 relative group">
+            {/* Bouton basculer caméra - SUPERPOSÉ EN HAUT À DROITE */}
+            <button
+              onClick={toggleCamera}
+              disabled={isProcessing}
+              title={`Passer à caméra ${facingMode === 'user' ? 'arrière' : 'frontale'}`}
+              className="absolute top-3 right-3 z-20 bg-gradient-to-br from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="text-xl" role="img" aria-label="Basculer caméra">
+                {facingMode === 'user' ? '📷' : '🎬'}
+              </span>
+            </button>
+
             <video
               ref={videoRef}
               className="w-full aspect-video bg-black"
@@ -180,7 +218,7 @@ export default function Enrollment() {
             {/* Info sous vidéo */}
             <div className="px-6 py-4 border-t border-gray-200 bg-gradient-to-r from-blue-50 to-violet-50">
               <p className="text-sm text-gray-700 font-bold">
-                🎬 Caméra active • Assure une bonne luminosité
+                🎬 Caméra {facingMode === 'user' ? 'frontale' : 'arrière'} active • Assure une bonne luminosité
               </p>
             </div>
           </div>
