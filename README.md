@@ -12,7 +12,7 @@ Application web de gestion d'assistance basée sur la **reconnaissance faciale e
 
 ```bash
 # 1. Cloner le projet
-git clone <repo-url>
+git clone https://github.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list.git
 cd Real-Time-Facial-Recognition-and-Automatic-attendance-list
 
 # 2. Installer dépendances
@@ -23,9 +23,9 @@ npm run dev
 # → Ouvre http://localhost:5173
 
 # 4. Utiliser l'app
-# - Onglet "Enrôler" : Capturer 5-10 photos d'une personne
-# - Onglet "Session" : Détecter et reconnaître des visages en temps réel
-# - Onglet "Admin" : Gérer les enrôlements (voir/supprimer)
+- Onglet "Enrôler" : Capturer 5-10 photos d'une personne
+- Onglet "Session" : Détecter et reconnaître des visages en temps réel
+- Onglet "Admin" : Gérer les enrôlements (voir/supprimer)
 ```
 
 **Prérequis** : Node.js 16+, navigateur moderne avec caméra  
@@ -310,65 +310,65 @@ Configuration:
 
 ```
 ┌─── Enrollment.jsx ──────────────────────────────────────┐
-│                                                          │
+│                                                         │
 │  videoRef (caméra) → canvasRef (frame)                  │
 │         ↓                                               │
-│  computeDescriptorFromCanvas() [faceService]           │
+│  computeDescriptorFromCanvas() [faceService]            │
 │         ↓                                               │
-│  Array<Float32Array[128]> (capture en mémoire)        │
+│  Array<Float32Array[128]> (capture en mémoire)          │
 │         ↓                                               │
-│  saveEnrollment(label, descriptors) [faceService]      │
+│  saveEnrollment(label, descriptors) [faceService]       │
 │         ↓                                               │
-│  IndexedDB: attend_enroll_v1                           │
-│  ├─ { label: "Alice", descriptors: [...], count: 5 }  │
-│  └─ { label: "Bob", descriptors: [...], count: 8 }    │
-└──────────────────────────────────────────────────────────┘
+│  IndexedDB: attend_enroll_v1                            │
+│  ├─ { label: "Alice", descriptors: [...], count: 5 }    │
+│  └─ { label: "Bob", descriptors: [...], count: 8 }      │
+└─────────────────────────────────────────────────────────┘
                         ↓
         ┌─── Session.jsx ──────────────────────────────────┐
-        │                                                   │
+        │                                                  │
         │  loadEnrollments() [faceService]                 │
         │         ↓                                        │
-        │  buildMatcherFromEnrollments() → FaceMatcher    │
+        │  buildMatcherFromEnrollments() → FaceMatcher     │
         │         ↓                                        │
-        │  processFrame() avec loop requestAnimationFrame │
+        │  processFrame() avec loop requestAnimationFrame  │
         │  │                                               │
-        │  ├─ detectAllFaces() + descriptors              │
-        │  │  ├─ matcher.findBestMatch(descriptor)        │
-        │  │  ├─ distance < 0.6 ? RECOGNIZED : UNKNOWN    │
-        │  │  └─ drawDetectionBox()                       │
+        │  ├─ detectAllFaces() + descriptors               │
+        │  │  ├─ matcher.findBestMatch(descriptor)         │
+        │  │  ├─ distance < 0.6 ? RECOGNIZED : UNKNOWN     │
+        │  │  └─ drawDetectionBox()                        │
         │  │                                               │
-        │  ├─ unknownFacesRef tracking par position       │
-        │  │  ├─ Nouveau = ajouter avec {x, y, id}       │
-        │  │  ├─ Existant = mettre à jour lastSeen        │
-        │  │  └─ Ancien (> 5s) = supprimer               │
+        │  ├─ unknownFacesRef tracking par position        │
+        │  │  ├─ Nouveau = ajouter avec {x, y, id}         │
+        │  │  ├─ Existant = mettre à jour lastSeen         │
+        │  │  └─ Ancien (> 5s) = supprimer                 │
         │  │                                               │
-        │  └─ Affichage stats:                            │
-        │     ├─ presentSet.size (reconnus)               │
-        │     ├─ unknownFacesRef.length (inconnus unique)│
-        │     └─ Total = reconnus + inconnus              │
-        │                                                   │
-        │  exportXLSX() → fichier attendance_*.xlsx       │
-        │  ├─ Liste des reconnus (nom, statut "Reconnu")  │
-        │  ├─ Visiteurs inconnus (count)                  │
-        │  └─ Stats: TOTAL PRÉSENCE, Reconnus, Inconnus   │
-        └───────────────────────────────────────────────────┘
+        │  └─ Affichage stats:                             │
+        │     ├─ presentSet.size (reconnus)                │
+        │     ├─ unknownFacesRef.length (inconnus unique)  │
+        │     └─ Total = reconnus + inconnus               │
+        │                                                  │
+        │  exportXLSX() → fichier attendance_*.xlsx        │
+        │  ├─ Liste des reconnus (nom, statut "Reconnu")   │
+        │  ├─ Visiteurs inconnus (count)                   │
+        │  └─ Stats: TOTAL PRÉSENCE, Reconnus, Inconnus    │
+        └──────────────────────────────────────────────────┘
                         ↓
         ┌─── Admin.jsx ─────────────────────────────────────┐
-        │                                                    │
+        │                                                   │
         │  getEnrollmentStats() [faceService]               │
         │  {                                                │
-        │    totalPeople: 2,                               │
-        │    totalPhotos: 13,                              │
-        │    enrollments: [                                │
-        │      { label: "Alice", descriptors: [...], ... } │
-        │      { label: "Bob", descriptors: [...], ... }   │
-        │    ]                                             │
-        │  }                                               │
-        │         ↓                                        │
-        │  Affichage tableau enrôlements                   │
-        │  ├─ deleteEnrollment(label) → IndexedDB         │
-        │  └─ clearEnrollments() → IndexedDB              │
-        └────────────────────────────────────────────────────┘
+        │    totalPeople: 2,                                │
+        │    totalPhotos: 13,                               │
+        │    enrollments: [                                 │
+        │      { label: "Alice", descriptors: [...], ... }  │
+        │      { label: "Bob", descriptors: [...], ... }    │
+        │    ]                                              │
+        │  }                                                │
+        │         ↓                                         │
+        │  Affichage tableau enrôlements                    │
+        │  ├─ deleteEnrollment(label) → IndexedDB           │
+        │  └─ clearEnrollments() → IndexedDB                │
+        └───────────────────────────────────────────────────┘
 ```
 
 ## 🔧 Configuration
@@ -791,7 +791,6 @@ Q4 2026: Mobile app (React Native)
 
 Ce projet est fourni à usage **éducatif et de recherche**.
 
-**Droits d'auteur** © 2026 ENSPY  
 **Auteurs** : DIFFO KENNE Garnel, NGONO NGUIETSI Vanina S.
 
 **Conditions d'utilisation** :
@@ -814,13 +813,13 @@ Voir [LICENSE](LICENSE) pour détails complets.
 
 Projet **IHM (Interface Homme-Machine)** — Janvier 2026  
 **Établissement** : ENSPY (École Nationale Supérieure Polytechnique de Yaoundé)  
-**Niveau** : Semestre 4 (Niveau 4)
+**Niveau** : Semestre 1 (Niveau 4)
 
 ### Contributeurs
 
 | Nom | Rôle | Contact |
 |-----|------|---------|
-| **DIFFO KENNE Garnel** | Lead Developer + Architecture | [GitHub](https://github.com/Garnel-Diffo) |
+| **DIFFO KENNE Garnel** | Lead Developer + Architecture + Full-Stack | [GitHub](https://github.com/Garnel-Diffo) |
 | **NGONO NGUIETSI Vanina S.** | Co-Developer + Design | [GitHub/LinkedIn] |
 
 ### Ressources utilisées
@@ -872,8 +871,8 @@ Projet **IHM (Interface Homme-Machine)** — Janvier 2026
 
 **Contact développeur** :
 - GitHub Issues : [Créer issue](https://github.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/issues)
-- Email : [À définir si publié]
-- Discord/Slack : [À définir]
+- Email : [diffogarnel@gmail.com]
+- LinkedIn : [Garnel DIFFO](www.linkedin.com/in/garnel-diffo-kenne-8706b3393)
 
 ### Contribuer
 
