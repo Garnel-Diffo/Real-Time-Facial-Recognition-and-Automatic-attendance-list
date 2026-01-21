@@ -5,7 +5,7 @@ import { buildMatcherFromEnrollments, loadEnrollments, loadFaceApiModels } from 
 
 const VIDEO_WIDTH = 640;
 const VIDEO_HEIGHT = 480;
-const DETECTION_INTERVAL = 3;
+const DETECTION_INTERVAL = 1; // set to 1 for near-instant feedback
 const RECOGNITION_THRESHOLD = 0.6;
 const UNKNOWN_FACE_DISTANCE_THRESHOLD = 80; // pixels: min distance to consider different unknown face
 
@@ -15,20 +15,23 @@ function drawDetectionBox(ctx, box, label, isKnown) {
   ctx.lineWidth = 3;
   ctx.strokeRect(box.x, box.y, box.width, box.height);
 
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
-  ctx.font = 'bold 16px Arial';
-  const metrics = ctx.measureText(label);
+  // Improved label styling for better visibility
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+  ctx.font = 'bold 18px Arial';
+  const metrics = ctx.measureText(label || '');
+  const paddingH = 10;
+  const paddingV = 8;
   const labelX = box.x;
-  const labelY = Math.max(box.y - 30, 0);
-  const labelWidth = metrics.width + 12;
-  const labelHeight = 28;
+  const labelY = Math.max(box.y - (paddingV * 2 + 18), 0);
+  const labelWidth = metrics.width + paddingH * 2;
+  const labelHeight = 18 + paddingV * 2;
 
   ctx.fillRect(labelX, labelY, labelWidth, labelHeight);
   ctx.strokeStyle = color;
   ctx.lineWidth = 2;
   ctx.strokeRect(labelX, labelY, labelWidth, labelHeight);
   ctx.fillStyle = '#FFFFFF';
-  ctx.fillText(label, labelX + 6, labelY + 20);
+  ctx.fillText(label, labelX + paddingH, labelY + (labelHeight + 6) / 2 - 6);
 }
 
 // Helper: calculate Euclidean distance between two points
@@ -59,6 +62,8 @@ export default function Session() {
   const [unknownCount, setUnknownCount] = useState(0); // Unique unknown faces
   const [detectedNames, setDetectedNames] = useState([]);
   const [fps, setFps] = useState(0);
+  const presentSetRef = useRef(new Set());
+  const fpsRef = useRef(0);
   const [facingMode, setFacingMode] = useState('user'); // 'user' = frontale, 'environment' = arrière
 
   const toggleCamera = async () => {
@@ -113,6 +118,16 @@ export default function Session() {
     setDetectedNames(prev => prev.includes(cleanName) ? prev : [...prev, cleanName]);
   }, []);
 
+  const updatePresentSet = (newSet) => {
+    presentSetRef.current = newSet;
+    setPresentSet(newSet);
+  };
+
+  const updateFps = (v) => {
+    fpsRef.current = v;
+    setFps(v);
+  };
+
   const processFrame = useCallback(async () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -139,7 +154,7 @@ export default function Session() {
     state.fpsCounter++;
     const now = Date.now();
     if (now - state.lastFpsTime >= 1000) {
-      setFps(state.fpsCounter);
+      updateFps(state.fpsCounter);
       state.fpsCounter = 0;
       state.lastFpsTime = now;
     }
@@ -181,9 +196,8 @@ export default function Session() {
           const box = detection.detection.box;
           const faceCenter = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
           const isKnown = match.label !== 'Inconnu';
-          const labelText = isKnown
-            ? `${match.label} (${match.distance.toFixed(2)})`
-            : 'Inconnu';
+          // Show only the name in the overlay for instant clarity
+          const labelText = isKnown ? `${match.label}` : 'Inconnu';
 
           drawDetectionBox(ctx, box, labelText, isKnown);
 
@@ -217,7 +231,7 @@ export default function Session() {
           }
         }
 
-        setPresentSet(newPresent);
+        updatePresentSet(newPresent);
 
         // Clean old unknown faces (not seen in last 5 seconds) and add new ones
         const now = Date.now();
@@ -230,7 +244,7 @@ export default function Session() {
         let msg = `🎬 ${detections.length} détecté(s)`;
         if (knownCount > 0) msg += ` | ✅ ${knownCount} reconnu(s)`;
         if (unknownFacesRef.current.length > 0) msg += ` | ❓ ${unknownFacesRef.current.length} inconnu(s)`;
-        msg += ` | ${fps} fps`;
+        msg += ` | ${fpsRef.current} fps`;
         setMessage(msg);
       }
     } catch (err) {
@@ -240,7 +254,7 @@ export default function Session() {
       state.processing = false;
       processingFrameRef.current = requestAnimationFrame(processFrame);
     }
-  }, [fps, presentSet, updateDetectedNames]);
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -446,8 +460,10 @@ export default function Session() {
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => {
-                setDetectedNames([]);
-                setPresentSet(new Set());
+                  setDetectedNames([]);
+                  // keep ref in sync
+                  presentSetRef.current = new Set();
+                  setPresentSet(new Set());
                 setUnknownCount(0);
               }}
               className="py-3 px-4 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold rounded-lg shadow-md transition-all"
